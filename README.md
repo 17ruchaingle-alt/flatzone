@@ -1,2 +1,232 @@
 # flatzone
 a website for a construction business
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Flatzone — Resell • Docs • Interiors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#ff6b35;
+      --dark:#0f1724;
+      --muted:#94a3b8;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.06);
+      --radius:16px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#0b1220 0%, #071226 60%);color:#e6eef8;line-height:1.4}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),#ff9a6a);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:18px;box-shadow:0 8px 30px rgba(255,107,53,0.12)}
+    .brand h1{margin:0;font-size:20px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    nav a.cta{background:linear-gradient(90deg,var(--accent),#ff8b5b);padding:10px 14px;border-radius:12px;color:white}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:20px;padding:28px;backdrop-filter: blur(6px);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    .headline{font-size:34px;margin:0 0 10px;color:white}
+    .sub{color:var(--muted);margin-bottom:18px}
+    .bullets{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{background:var(--glass);padding:8px 12px;border-radius:999px;color:#d7e8ff;font-weight:600;font-size:14px}
+    .actions{display:flex;gap:12px;margin-top:18px}
+    .btn{padding:12px 16px;border-radius:12px;border:0;font-weight:700;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#ff8b5b);color:white}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--muted)}
+
+    /* Quick cards */
+    .cards{display:flex;flex-direction:column;gap:14px}
+    .quick{background:linear-gradient(180deg,#071226, #071526);padding:14px;border-radius:12px}
+    .quick h3{margin:0 0 6px}
+    .quick p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Services */
+    section.services{margin-top:36px}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{background:#081226;border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.03)}
+    .service h4{margin:8px 0 6px}
+    .service p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Features list */
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+    .feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+    .feature h4{margin:0 0 8px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+    .pic{height:120px;border-radius:10px;background-size:cover;background-position:center;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+
+    /* CTA strip */
+    .cta-strip{margin-top:30px;background:linear-gradient(90deg, rgba(255,107,53,0.12), rgba(255,139,91,0.06));padding:18px;border-radius:14px;display:flex;align-items:center;justify-content:space-between}
+
+    /* Footer */
+    footer{margin-top:38px;padding:18px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .services-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      nav{display:none}
+    }
+
+    /* small visuals */
+    .kicker{display:inline-block;background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px;color:#ffd8c8}
+    .muted{color:var(--muted)}
+
+    /* form */
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+    textarea{min-height:100px}
+
+    /* small animation */
+    .logo {transition:transform .3s ease}
+    .logo:hover{transform:translateY(-4px) rotate(-4deg)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">FZ</div>
+        <div>
+          <h1>Flatzone</h1>
+          <div class="muted" style="font-size:13px">Resell • Documentation • Interiors</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact" class="cta">Get Started</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <div class="hero-card">
+        <span class="kicker">Trusted in 200+ Projects</span>
+        <h2 class="headline">Sell. Manage. Design — All in one place.</h2>
+        <p class="sub">Flatzone helps homeowners and investors resell properties, keep all documentation organised and choose interior paint & design options that sell faster.</p>
+
+        <div class="bullets">
+          <div class="chip">Resell with Flatzone</div>
+          <div class="chip">All documents in one place</div>
+          <div class="chip">Interior paint & design picks</div>
+          <div class="chip">Free valuation</div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary">Get Free Valuation</button>
+          <button class="btn ghost">Learn More</button>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <h4>Why resell with Flatzone</h4>
+            <p class="muted">We connect you to verified buyers, stage the property for better offers, and handle negotiations end-to-end.</p>
+          </div>
+          <div class="feature">
+            <h4>All documentation in one place</h4>
+            <p class="muted">Title, NOC, approvals, sale agreement drafts — neatly organised and accessible to you and legal advisors.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="cards">
+        <div class="quick">
+          <h3>Interior Design — Paint Choices</h3>
+          <p class="muted">Expert-picked colour palettes and 3D mockups to help buyers visualise your space.</p>
+        </div>
+        <div class="quick">
+          <h3>How it Works</h3>
+          <p class="muted">1) Free valuation — 2) Document check — 3) Staging & design — 4) List & sell</p>
+        </div>
+        <div class="quick">
+          <h3>Start Today</h3>
+          <p class="muted">No upfront fees for valuation. Pay on successful sale — simple and transparent.</p>
+        </div>
+      </aside>
+    </main>
+
+    <section id="services" class="services">
+      <h2 style="margin:8px 0 16px">Our Services</h2>
+      <div class="services-grid">
+        <div class="service">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M3 11.5L12 3l9 8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h4>Resell with Flatzone</h4>
+          <p>Listing, marketing, buyer verification and seamless handover — we handle the heavy lifting so you can focus on the next plan.</p>
+        </div>
+        <div class="service">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.4"/></svg>
+          <h4>All Documentation at One Place</h4>
+          <p>Secure document management for title deeds, approvals, occupancy certificates and sale agreements — shareable with a single click.</p>
+        </div>
+        <div class="service">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M3 21h18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <h4>Interior Design & Paint Choices</h4>
+          <p>Choose from curated palettes and mockups designed to maximise buyer appeal — virtual staging included.</p>
+        </div>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <div class="pic" style="background-image:url('https://images.unsplash.com/photo-1572120360610-d971b9b0a9b9?auto=format&fit=crop&w=800&q=60')"></div>
+        <div class="pic" style="background-image:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=60')"></div>
+        <div class="pic" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=60')"></div>
+        <div class="pic" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=60')"></div>
+      </div>
+
+      <div class="cta-strip">
+        <div>
+          <strong style="font-size:18px">Ready to list or redesign?</strong>
+          <div class="muted">Get a free valuation and a complimentary colour palette suggestion for your space.</div>
+        </div>
+        <div>
+          <a href="#contact" class="btn primary" style="text-decoration:none;display:inline-block">Contact Team</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:28px">
+      <h2>Contact Us</h2>
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px">
+        <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:12px">
+          <p class="muted">Tell us a bit about your property and what you'd like to achieve. We'll get back with a free, no-obligation plan.</p>
+          <form onsubmit="event.preventDefault(); alert('Thanks! We will reach out soon.');">
+            <input placeholder="Your full name" required>
+            <input placeholder="Email or phone" required>
+            <input placeholder="Property city / locality">
+            <textarea placeholder="Short message (e.g. Looking to resell, need design help)"></textarea>
+            <div style="display:flex;gap:10px">
+              <button class="btn primary" type="submit">Send Request</button>
+              <button class="btn ghost" type="button" onclick="location.href='mailto:hello@flatzone.example?subject=Interested%20in%20Flatzone'">Email Us</button>
+            </div>
+          </form>
+        </div>
+
+        <aside style="padding:22px;border-radius:12px;background:linear-gradient(180deg,#071226,#061226);">
+          <h3 style="margin-top:0">Quick Info</h3>
+          <p class="muted">Phone: +91 98765 43210<br>Mail: hello@flatzone.example</p>
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.04);margin:14px 0">
+          <h4 style="margin:0 0 8px">What we promise</h4>
+          <ul style="margin:0;padding-left:18px;color:var(--muted)">
+            <li>Transparent fees — pay on successful sale</li>
+            <li>Secure document handling</li>
+            <li>Curated design boards for every budget</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <strong>Flatzone</strong> — Built for homeowners & investors</div>
+      <div class="muted">Made with care • 2025</div>
+    </footer>
+  </div>
+</body>
+</html>
